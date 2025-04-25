@@ -16,7 +16,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 // Install Python dependencies
-                sh('pip install -r requirements.txt')
+                sh('python3 -m pip install -r requirements.txt')
 
                 // Lint python
                 sh('make lint')
