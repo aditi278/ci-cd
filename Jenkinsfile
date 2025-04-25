@@ -33,10 +33,13 @@ pipeline {
         }
 
         stage('Build Image') {
-            app = docker.build("${DOCKER_CREDENTIALS_USR}/ci-cd")
-            docker.withRegistry('https://registry.hub.docker.com', ${DOCKER_CREDENTIALS}){
-                app.push("latest")
+            steps{
+                app = docker.build("${DOCKER_CREDENTIALS_USR}/ci-cd")
+                docker.withRegistry('https://registry.hub.docker.com', ${DOCKER_CREDENTIALS}){
+                    app.push("latest")
+                }
             }
+            
         }
 
         stage('Deploy to Kubernetes') {
