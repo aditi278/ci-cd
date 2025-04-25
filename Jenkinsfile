@@ -34,10 +34,13 @@ pipeline {
 
         stage('Build Image') {
             steps{
-                app = docker.build("${DOCKER_CREDENTIALS_USR}/ci-cd")
-                docker.withRegistry('https://registry.hub.docker.com', ${DOCKER_CREDENTIALS}){
-                    app.push("latest")
+                script {
+                    app = docker.build("${DOCKER_CREDENTIALS_USR}/ci-cd")
+                    docker.withRegistry("https://registry.hub.docker.com", "${DOCKER_CREDENTIALS}"){
+                        app.push("latest")
+                    }
                 }
+                
             }
             
         }
