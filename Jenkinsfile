@@ -14,23 +14,24 @@ pipeline {
     stages {
     
         stage('Build and Test') {
-            withPythonEnv(python) {
-                steps {
-                    // Install Python dependencies
+            steps {
+
+                // Install Python dependencies
+                withPythonEnv(python) {
                     sh('python -m pip install -r requirements.txt')
-
-                    // Lint python
-                    sh('make lint')
-
-                    // Run bandit
-                    sh('make bandit')
-                    
-                    // Run unit and integration tests
-                    sh('python -m unittest discover -s . -p "test_*.py"')
-
-                    // Run coverage reporting
-                    sh('make coverage')
                 }
+
+                // Lint python
+                sh('make lint')
+
+                // Run bandit
+                sh('make bandit')
+                
+                // Run unit and integration tests
+                sh('python -m unittest discover -s . -p "test_*.py"')
+
+                // Run coverage reporting
+                sh('make coverage')
             }
         }
 
