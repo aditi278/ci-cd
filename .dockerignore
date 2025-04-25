@@ -1,0 +1,7 @@
+.dockerignore
+.gitignore
+.coverage
+htmlcov/
+__pycache__/
+Makefile
+Jenkinsfile
