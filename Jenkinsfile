@@ -12,12 +12,11 @@ pipeline {
     }
 
     stages {
-    
         stage('Build and Test') {
             steps {
 
                 // Install Python dependencies
-                withPythonEnv(python) {
+                withPythonEnv('python') {
                     sh('python -m pip install -r requirements.txt')
                 }
 
