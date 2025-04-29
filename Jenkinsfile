@@ -15,10 +15,9 @@ pipeline {
         stage('Build and Test') {
             steps {
 
+                sh('apt install python3 -y')
                 // Install Python dependencies
-                docker.image('python3').inside {    
-                    sh('pip install -r requirements.txt')
-                }
+                sh('python3 -m pip install -r requirements.txt')
 
                 // Lint python
                 sh('make lint')
