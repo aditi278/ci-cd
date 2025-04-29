@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3'
-        }
-    }
+    agent any
 
     environment {
         IMAGE_NAME = 'ci-cd'
@@ -20,7 +16,7 @@ pipeline {
             steps {
 
                 // Install Python dependencies
-                withPythonEnv('python3') {
+                docker.image('python3').inside {    
                     sh('pip install -r requirements.txt')
                 }
 
