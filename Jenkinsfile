@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+      docker {
+        image 'python:3'
+      }
+    }
 
     environment {
         IMAGE_NAME = 'ci-cd'
