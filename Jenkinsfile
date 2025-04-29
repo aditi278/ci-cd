@@ -17,7 +17,7 @@ pipeline {
 
                 // Install Python dependencies
                 withPythonEnv('python3') {
-                    sh('python --version; python -m pip install -r requirements.txt')
+                    sh('pip install -r requirements.txt')
                 }
 
                 // Lint python
