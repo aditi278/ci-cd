@@ -16,7 +16,7 @@ pipeline {
             steps {
 
                 // Install Python dependencies
-                withPythonEnv('python') {
+                withPythonEnv('python3') {
                     sh('python --version; python -m pip install -r requirements.txt')
                 }
 
